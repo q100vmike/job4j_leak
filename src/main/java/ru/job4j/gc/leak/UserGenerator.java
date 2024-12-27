@@ -9,17 +9,17 @@ import java.util.Random;
 
 public class UserGenerator implements Generate {
 
-    public static final String PATH_NAMES = "files/names.txt";
-    public static final String PATH_SURNAMES = "files/surnames.txt";
-    public static final String PATH_PATRONS = "files/patr.txt";
+    public final String PATH_NAMES = "files/names.txt";
+    public final String PATH_SURNAMES = "files/surnames.txt";
+    public final String PATH_PATRONS = "files/patr.txt";
 
-    public static final String SEPARATOR = " ";
-    public static final Integer NEW_USERS = 1000;
+    public final String SEPARATOR = " ";
+    public final Integer NEW_USERS = 1000;
 
-    public static List<String> names;
-    public static List<String> surnames;
-    public static List<String> patrons;
-    private static final List<User> USERS = new ArrayList<>();
+    public List<String> names;
+    public List<String> patrons;
+    private List<String> surnames;
+    private final List<User> USERS = new ArrayList<>();
     private final Random random;
 
     public UserGenerator(Random random) {
