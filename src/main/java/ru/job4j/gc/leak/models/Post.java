@@ -49,6 +49,6 @@ public class Post {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, text, comments);
+        return Objects.hash(id);
     }
 }

@@ -31,11 +31,11 @@ public class UserGenerator implements Generate {
     public void generate() {
         USERS.clear();
         for (int i = 0; i < NEW_USERS; i++) {
-            var name = surnames.get(random.nextInt(surnames.size())) + SEPARATOR
-                    + names.get(random.nextInt(names.size())) + SEPARATOR
-                    + patrons.get(random.nextInt(patrons.size()));
             var user = new User();
-            user.setName(name);
+            user.setName(String.format("%s%s%s%s%s",
+                    surnames.get(random.nextInt(surnames.size())), SEPARATOR,
+                    names.get(random.nextInt(names.size())), SEPARATOR,
+                    patrons.get(random.nextInt(patrons.size()))));
             USERS.add(user);
         }
     }

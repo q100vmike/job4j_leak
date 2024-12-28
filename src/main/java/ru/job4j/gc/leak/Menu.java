@@ -49,7 +49,7 @@ public class Menu {
                 commentGenerator.generate();
                 var post = new Post();
                 post.setText(text);
-                post.setComments(CommentGenerator.getComments());
+                post.setComments(commentGenerator.getComments());
                 var saved = postStore.add(post);
                 System.out.println("Generate: " + saved.getId());
             } else if (ADD_MANY_POST == userChoice) {
@@ -79,11 +79,10 @@ public class Menu {
     }
 
     private double memUsage() {
-        var rt = Runtime.getRuntime();
-        var totalMem = rt.totalMemory();
-        var freeMem = rt.freeMemory();
-        var usedMem = totalMem - freeMem;
-        return (double) usedMem / 1024 / 1024;
+        Runtime rt = Runtime.getRuntime();
+        long totalMem = rt.totalMemory();
+        long freeMem = rt.freeMemory();
+        return (double) (totalMem - freeMem) / 1024 / 1024;
     }
 
     private void createPost(CommentGenerator commentGenerator,
@@ -93,7 +92,7 @@ public class Menu {
         commentGenerator.generate();
         var post = new Post();
         post.setText(text);
-        post.setComments(CommentGenerator.getComments());
+        post.setComments(commentGenerator.getComments());
         postStore.add(post);
     }
 }
