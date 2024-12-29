@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class CommentGenerator implements Generate {
 
-    public final String path_phrases = "files/phrases.txt";
+    public final String PATHPHRASES = "files/phrases.txt";
 
     public final String separator = System.lineSeparator();
     private final List<Comment> comments = new ArrayList<>();
@@ -25,7 +25,7 @@ public class CommentGenerator implements Generate {
 
     private void read() {
         try {
-            phrases = read(path_phrases);
+            phrases = read(PATHPHRASES);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
