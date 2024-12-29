@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public final Integer ADDPOST = 1;
-    public final Integer ADDMANYPOST = 2;
-    public final Integer SHOWALLPOSTS = 3;
-    public final Integer DELETEPOST = 4;
+    public final Integer addpost = 1;
+    public final Integer addmanypost = 2;
+    public final Integer showallposts = 3;
+    public final Integer deletepost = 4;
 
     public final String select = "Выберите меню";
     public final String count = "Выберите количество создаваемых постов";
-    public final String TEXTOFPOST = "Введите текст";
+    public final String textofpost = "Введите текст";
     public final String exit = "Конец работы";
 
     public final String menu = """
@@ -42,8 +42,8 @@ public class Menu {
             System.out.println(select);
             int userChoice = Integer.parseInt(scanner.nextLine());
             System.out.println(userChoice);
-            if (ADDPOST == userChoice) {
-                System.out.println(TEXTOFPOST);
+            if (addpost == userChoice) {
+                System.out.println(textofpost);
                 String text = scanner.nextLine();
                 userGenerator.generate();
                 commentGenerator.generate();
@@ -52,8 +52,8 @@ public class Menu {
                 post.setComments(commentGenerator.getComments());
                 var saved = postStore.add(post);
                 System.out.println("Generate: " + saved.getId());
-            } else if (ADDMANYPOST == userChoice) {
-                System.out.println(TEXTOFPOST);
+            } else if (addmanypost == userChoice) {
+                System.out.println(textofpost);
                 String text = scanner.nextLine();
                 System.out.println(count);
                 String count = scanner.nextLine();
@@ -66,9 +66,9 @@ public class Menu {
                 }
                 System.out.println();
                 memUsage();
-            } else if (SHOWALLPOSTS == userChoice) {
+            } else if (showallposts == userChoice) {
                 System.out.println(postStore.getPosts());
-            } else if (DELETEPOST == userChoice) {
+            } else if (deletepost == userChoice) {
                 System.out.println("Удаление всех постов ...");
                 postStore.removeAll();
             } else {
