@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class CommentGenerator implements Generate {
 
-    public final String PATH_PHRASES = "files/phrases.txt";
+    public final String path_phrases = "files/phrases.txt";
 
-    public final String SEPARATOR = System.lineSeparator();
-    private final List<Comment> COMMENTS = new ArrayList<>();
-    public final Integer COUNT = 50;
+    public final String separator = System.lineSeparator();
+    private final List<Comment> comments = new ArrayList<>();
+    public final Integer count = 50;
     private List<String> phrases;
     private final UserGenerator userGenerator;
     private final Random random;
@@ -25,27 +25,27 @@ public class CommentGenerator implements Generate {
 
     private void read() {
         try {
-            phrases = read(PATH_PHRASES);
+            phrases = read(path_phrases);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
     }
 
     public List<Comment> getComments() {
-        return COMMENTS;
+        return comments;
     }
 
     @Override
     public void generate() {
-        COMMENTS.clear();
-        for (int i = 0; i < COUNT; i++) {
+        comments.clear();
+        for (int i = 0; i < count; i++) {
             var comment = new Comment();
             comment.setText(String.format("%s%s%s%s%s",
-                    phrases.get(random.nextInt(phrases.size())), SEPARATOR,
-                    phrases.get(random.nextInt(phrases.size())), SEPARATOR,
+                    phrases.get(random.nextInt(phrases.size())), separator,
+                    phrases.get(random.nextInt(phrases.size())), separator,
                     phrases.get(random.nextInt(phrases.size()))));
             comment.setUser(userGenerator.randomUser());
-            COMMENTS.add(comment);
+            comments.add(comment);
         }
     }
 }

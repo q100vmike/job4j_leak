@@ -10,7 +10,7 @@ public interface Generate {
     void generate();
 
     default List<String> read(String path) throws IOException {
-        try(Stream<String> lines = Files.lines(Paths.get(path))) {
+        try (Stream<String> lines = Files.lines(Paths.get(path))) {
             return lines.toList();
         }
     }

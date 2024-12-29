@@ -7,22 +7,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class PostStore {
 
-    private final Map<Integer, Post> POSTS = new HashMap<>();
+    private final Map<Integer, Post> posts = new HashMap<>();
 
     private final AtomicInteger atomicInteger = new AtomicInteger(1);
 
     public Post add(Post post) {
         var id = atomicInteger.getAndIncrement();
         post.setId(id);
-        POSTS.put(id, post);
+        posts.put(id, post);
         return post;
     }
 
     public void removeAll() {
-        POSTS.clear();
+        posts.clear();
     }
 
     public Collection<Post> getPosts() {
-        return POSTS.values();
+        return posts.values();
     }
 }

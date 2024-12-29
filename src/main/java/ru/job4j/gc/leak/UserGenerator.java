@@ -9,17 +9,17 @@ import java.util.Random;
 
 public class UserGenerator implements Generate {
 
-    public final String PATH_NAMES = "files/names.txt";
-    public final String PATH_SURNAMES = "files/surnames.txt";
-    public final String PATH_PATRONS = "files/patr.txt";
+    public final String path_names = "files/names.txt";
+    public final String path_surnames = "files/surnames.txt";
+    public final String path_patrons = "files/patr.txt";
 
-    public final String SEPARATOR = " ";
-    public final Integer NEW_USERS = 1000;
+    public final String separator = " ";
+    public final Integer new_users = 1000;
 
     public List<String> names;
     public List<String> patrons;
     private List<String> surnames;
-    private final List<User> USERS = new ArrayList<>();
+    private final List<User> users = new ArrayList<>();
     private final Random random;
 
     public UserGenerator(Random random) {
@@ -29,28 +29,28 @@ public class UserGenerator implements Generate {
 
     @Override
     public void generate() {
-        USERS.clear();
-        for (int i = 0; i < NEW_USERS; i++) {
+        users.clear();
+        for (int i = 0; i < new_users; i++) {
             var user = new User();
             user.setName(String.format("%s%s%s%s%s",
-                    surnames.get(random.nextInt(surnames.size())), SEPARATOR,
-                    names.get(random.nextInt(names.size())), SEPARATOR,
+                    surnames.get(random.nextInt(surnames.size())), separator,
+                    names.get(random.nextInt(names.size())), separator,
                     patrons.get(random.nextInt(patrons.size()))));
-            USERS.add(user);
+            users.add(user);
         }
     }
 
     private void readAll() {
         try {
-            names = read(PATH_NAMES);
-            surnames = read(PATH_SURNAMES);
-            patrons = read(PATH_PATRONS);
+            names = read(path_names);
+            surnames = read(path_surnames);
+            patrons = read(path_patrons);
         } catch (IOException e) {
             throw new IllegalArgumentException(e);
         }
     }
 
     public User randomUser() {
-        return USERS.get(random.nextInt(USERS.size()));
+        return users.get(random.nextInt(users.size()));
     }
 }
